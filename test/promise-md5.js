@@ -5,9 +5,9 @@ describe('#promiseMd5', function(){
 
     context('with string argument', function(){
 
-        it('should compute MD5 hash', function(){
+        it('should compute MD5 hash', async function(){
 
-            var hash = promiseMd5('Glad Chinda')
+            var hash = await promiseMd5('Glad Chinda')
 
             expect(hash)
             .to.be.a('string')
@@ -20,7 +20,7 @@ describe('#promiseMd5', function(){
 
         it('should throw an error', async function(){
 
-            var err = await promiseMd5(12345).catch(function(err){
+            await promiseMd5(12345).catch(function(err){
                 expect(function () { throw err })
                 .to.throw(TypeError, 'The "data" argument must be of type string or an instance of Buffer, TypedArray, or DataView')
     
